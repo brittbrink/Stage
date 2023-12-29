@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "phpcrud";
+    $dbname = "sciospoc";
 
     $conn = new mysqli("$servername", "$username", "$password", "$dbname");
 

@@ -1,45 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> PHP CRUD </title>
+<?php
+session_start();
+include "config.php";
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+if (isset($_POST['gebruikersnaam']) && isset($_POST['wachtwoord'])){
+    // Alle tekens die niet behoren tot de naam worden weggehaald.
+    function validate($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+        // De gestripte data toekennen aan variabele.
+    $gebruikersnaam = validate($_POST['gebruikersnaam']);
+    $wachtwoord = validate($_POST['wachtwoord']);
 
-  </head>
-    <body>
-        <div style="height: 700px;" class="d-flex align-items-center justify-content-center">
-            <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="./Afbeeldingen/SCIOS-logo.png" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Inloggen</h5>
-                <form method="POST">
-                    <div class="form-group">
-                    Gebruikersnaam:
-                    <input type="text" class="form-control" 
-                    placeholder="Vul uw gebruikersnaam in." 
-                    name="gebruikersnaam" autocomplete="off">
-                    </div>
+    //$gebruikersnaam = $_POST['gebruikersnaam'];
+    //$wachtwoord = $_POST['wachtwoord'];
 
-                    <div class="form-group">
-                    Wachtwoord:
-                    <input type="text" class="form-control" 
-                    placeholder="Vul uw wachtwoord in." 
-                    name="wachtwoord" autocomplete="off">
-                    </div>
-                
-                    
-                    <button type="submit" class="btn btn-primary" name="inloggen">Inloggen</button>
-                    
-                </form>
-            </div>
-            </div>
-        </div>
-    </body>
-
-</html>
+        // Als het veld van de gebruikersnaam leeg is, wordt er teruggegaan naar de index.php pagina.
+    if (empty($gebruikersnaam)){
+        header("Location: index.php?error=Gebruikersnaam is vereist.");
+        exit();
+    }
+        // Als het veld van het wachtwoord leeg is, wordt er teruggegaan naar de index.php pagina.
+    else if(empty($wachtwoord)){
+        header("Location: index.php?error=Wachtwoord is vereist.");
+        exit();
+    }
+    else{
+            // Query uitvoeren om te checken of de gebruiker in de database staat.
+        $sql = "SELECT * FROM `gebruiker` WHERE Gebruikersnaam='$gebruikersnaam' AND Wachtwoord='$wachtwoord'";
+        $result = mysqli_query($conn, $sql);
+            // Checken of vanuit de query er een rij resultaat uitkomt.
+        
+        if (mysqli_num_rows($result) === 1){
+            $row = mysqli_fetch_assoc($result);
+            
+            if($row['Gebruikersnaam'] === "$gebruikersnaam" && $row['Wachtwoord'] === "$wachtwoord"){
+                echo "U bent ingelogt!";
+                $_SESSION['gebruikersnaam'] = $row['Gebruikersnaam'];
+                $_SESSION['ID'] = $row['ID'];
+                header("Location: home.php");
+                exit();
+            }
+            else{
+                header("Location: index.php?error= Gebruikersnaam of wachtwoord niet gevonden.");
+                exit(); 
+            }
+        }
+        else{
+            header("Location: index.php?error= Gebruikersnaam of wachtwoord incorrect.");
+            //echo "<p style='color: red'>Gebruiker niet gevonden</p>";
+            exit(); 
+        }
+    }
+}
+else{
+    header("Location: index.php?error = else-tak of first if");
+    exit(); 
+}
+?>
