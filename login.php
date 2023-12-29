@@ -1,4 +1,7 @@
 <?php
+
+// Bron: https://www.simplilearn.com/tutorials/php-tutorial/php-login-form
+
 session_start();
 include "config.php";
 
