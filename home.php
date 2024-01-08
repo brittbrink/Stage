@@ -1,6 +1,34 @@
 <?php 
 
 session_start();
+include "config.php";
+
+// functie gedefinieerd voor het ophalen van de gecertificeerde scopes van een gebruiker.
+function OphalenGebruikerScope($sessie_ID, $conn)
+{
+    $sql = "SELECT * FROM `gebruikerscope` WHERE Gebruiker_ID='$sessie_ID' AND Gecertificeerd=true";
+    $result = mysqli_query($conn, $sql);
+
+    if($result){
+        while($row=mysqli_fetch_assoc($result)){
+            $ScopeID=$row['Scope_ID'];
+            $GebruikerID=$row['Gebruiker_ID'];
+            $gecertificeerd=$row['Gecertificeerd'];
+            $inzien=$row['Alleen_lezen'];
+
+            echo "Scope id: " . $ScopeID;
+            echo '<br>'; 
+            echo "Gebruikers id: " . $GebruikerID;
+            echo '<br>';
+            echo "Gecertificeerd? " . $gecertificeerd;
+            echo '<br>';
+            echo "Inzien? " . $inzien;
+            
+        }
+    }
+
+}
+
 
 if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 
@@ -18,25 +46,12 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 
 </head>
 <body>
+    <div></div>
+    <h1>Hello, <?php echo $_SESSION['gebruikersnaam']; ?>.</h1>
+    </br> 
+    <?php OphalenGebruikerScope($_SESSION['ID'], $conn); ?> 
 
-    <ul class="nav nav-pills mb-3 my-2 mx-2" id="pills-tab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="Home-tab" data-toggle="pill" href="Home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="Credit-tab" data-toggle="pill" href="Credit" role="tab" aria-controls="pills-profile" aria-selected="false">Credit</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="Statistieken-tab" data-toggle="pill" href="Statistieken" role="tab" aria-controls="pills-contact" aria-selected="false">Statistieken</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="Home-tab">Home</div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="Credit-tab">Credit</div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="Statistieken-tab">Statistieken</div>
-    </div>
-    <h1>Hello, <?php echo $_SESSION['gebruikersnaam']; ?></h1>
-
+    </br>
     <a href="logout.php">Logout</a>
 
 </body>
@@ -45,7 +60,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 <?php 
 }
 else{
-
+   
     header("Location: index.php");
     exit();
 }
