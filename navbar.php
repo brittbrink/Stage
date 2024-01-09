@@ -3,27 +3,44 @@
 <head>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-    <ul class="nav nav-pills mb-3 my-2 mx-2" id="pills-tab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="Home-tab" data-toggle="pill" href="Home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="Credit-tab" data-toggle="pill" href="Credit" role="tab" aria-controls="pills-profile" aria-selected="false">Credit</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="Statistieken-tab" data-toggle="pill" href="Statistieken" role="tab" aria-controls="pills-contact" aria-selected="false">Statistieken</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="Home-tab">Home</div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="Credit-tab">Credit</div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="Statistieken-tab">Statistieken</div>
-    </div>
     
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="./Afbeeldingen/SCIOS-logo.png" width="40" height="40" alt="">
+        </a>
+        <ul class="nav nav-pills mr-auto pl-3" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="pill" href="home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="pill" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTab">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> De homepagina. </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> Hier is mijn profiel.</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> Dit is het contact. </div>
+        </div> 
+
+    </nav> 
+
+    <script>
+        $('#myTab a').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+        
+    </script> 
 
 </body>
 </html>
+
