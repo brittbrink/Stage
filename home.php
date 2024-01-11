@@ -5,7 +5,7 @@ include "config.php";
 include "navbar.php";
 
 // functie gedefinieerd voor het ophalen van de gecertificeerde scopes van een gebruiker.
-function OphalenGebruikerScope($sessie_ID, $conn)
+function OphalenGebruikerScopeGecertificeerd($sessie_ID, $conn)
 {
     $sql = "SELECT * FROM `gebruikerscope` WHERE Gebruiker_ID='$sessie_ID' AND Gecertificeerd=true";
     $result = mysqli_query($conn, $sql);
@@ -17,22 +17,22 @@ function OphalenGebruikerScope($sessie_ID, $conn)
             $gecertificeerd=$row['Gecertificeerd'];
             $inzien=$row['Alleen_lezen'];
 
-            echo '<br>';
-            echo "Scope id: " . $ScopeID;
-            echo '<br>'; 
-            echo "Gebruikers id: " . $GebruikerID;
-            echo '<br>';
-            echo "Gecertificeerd? " . $gecertificeerd;
-            echo '<br>';
-            echo "Inzien? " . $inzien;
+            // echo '<br>';
+            // echo "Scope id: " . $ScopeID;
+            // echo '<br>'; 
+            // echo "Gebruikers id: " . $GebruikerID;
+            // echo '<br>';
+            // echo "Gecertificeerd? " . $gecertificeerd;
+            // echo '<br>';
+            // echo "Inzien? " . $inzien;
             
-            ScopeGebruiker($ScopeID, $conn);
+            ScopeGebruikerGecertificeerd($ScopeID, $conn);
         }
     }
 
 }
 
-function ScopeGebruiker($ID_Scope, $conn)
+function ScopeGebruikerGecertificeerd($ID_Scope, $conn)
 {
     $sql = "SELECT * FROM `scope` WHERE ID='$ID_Scope'";
     $result = mysqli_query($conn, $sql);
@@ -43,12 +43,12 @@ function ScopeGebruiker($ID_Scope, $conn)
             $scopeNummer=$row['Nummer'];
             $omschrijving=$row['Omschrijving'];
 
-            echo '<br>';
-            echo "Scope id: " . $scopeId;
+            // echo '<br>';
+            // echo "Scope id: " . $scopeId;
             echo '<br>'; 
-            echo "Nummer scope: " . $scopeNummer;
-            echo '<br>';
-            echo "Omschrijving van de scope: " . $omschrijving;
+            echo "Scope " . $scopeNummer;
+            // echo '<br>';
+            // echo "Omschrijving van de scope: " . $omschrijving;
                  
         }
     }
@@ -100,7 +100,18 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <?php OphalenGebruikerScope($_SESSION['ID'], $conn); ?> 
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <label class="form-check-label" for="inlineCheckbox1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                            <label class="form-check-label" for="inlineCheckbox2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+                            <label class="form-check-label" for="inlineCheckbox3"><?php OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn) ; ?> </label>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
