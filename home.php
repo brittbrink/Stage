@@ -66,7 +66,8 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
     <title>HOME</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"> <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"> <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -74,16 +75,32 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
     <div class="container mx-1 my-4">
     <div class="row justify-content-start">
         <div class="col-6 col-md-4">
-            <div class="oval">
-                <span class="text">Locatie toevoegen</span>
+            <div class="step step-active">
+            <div>
+                <div class="circle">1</div>
             </div>
-            <div class="line-vertical arrow-down"></div>
-            <div class="oval">
-                <span class="text">Bedrijf toevoegen</span>
-            </div> 
-            <div class="line-vertical arrow-down"></div>
-            <div class="oval">
-                <span class="text">Installatie bekijken</span>
+            <div>
+                <div class="title">Eerste stap</div>
+                <div class="caption">Een locatie toevoegen aan uw verzameling.</div>
+            </div>
+            </div>
+            <div class="step">
+            <div>
+                <div class="circle">2</div>
+            </div>
+            <div>
+                <div class="title">Tweede stap</div>
+                <div class="caption">Een bedrijf toevoegen aan de locatie.</div>
+            </div>
+            </div>
+            <div class="step">
+            <div>
+                <div class="circle">3</div>
+            </div>
+            <div>
+                <div class="title">Derde stap</div>
+                <div class="caption">De installaties bekijken van het bedrijf.</div>
+            </div>
             </div>
         </div>
         <div class="col-12 col-md-4">
@@ -127,7 +144,9 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 
     <script>
         $('#myModal').modal('show')
+
     </script>
+
 </body>
 </html>
 
