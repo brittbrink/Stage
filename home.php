@@ -23,7 +23,7 @@ function OphalenGebruikerScopeGecertificeerd($sessie_ID, $conn, $cert)
             return $gebruikerdata;
         }
         else{
-            return null;
+            return [];
         } 
     }
 }
@@ -117,9 +117,11 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                     <div class="modal-body">
                         
                         <?php 
-                        $count = OphalenScopes($conn);
+                        $resultScopes = OphalenScopes($conn);
+                        $resultGebruiker = OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn, true);
+                        $count = array_diff($resultScopes, $resultGebruiker);
                         if($count){
-                            foreach(OphalenScopes($conn) as $value) { 
+                            foreach($count as $value) { 
                             ?>                      
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id=<?php $value ?>>
