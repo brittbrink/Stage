@@ -3,54 +3,52 @@
 session_start();
 include "config.php";
 include "navbar.php";
+$cert= true;
+
 
 // functie gedefinieerd voor het ophalen van de gecertificeerde scopes van een gebruiker.
-function OphalenGebruikerScopeGecertificeerd($sessie_ID, $conn)
+function OphalenGebruikerScopeGecertificeerd($sessie_ID, $conn, $cert)
 {
-    $sql = "SELECT * FROM `gebruikerscope` WHERE Gebruiker_ID='$sessie_ID' AND Gecertificeerd=true";
+    $sql = "SELECT s.Nummer FROM gebruikerscope gs JOIN scope s ON s.ID = gs.Scope_ID WHERE gs.Gebruiker_ID = '$sessie_ID' AND gs.Gecertificeerd=$cert";
     $result = mysqli_query($conn, $sql);
-
     if($result){
+        $i = 0;
+        $gebruikerdata = [];
         while($row=mysqli_fetch_assoc($result)){
-            $ScopeID=$row['Scope_ID'];
-            $GebruikerID=$row['Gebruiker_ID'];
-            $gecertificeerd=$row['Gecertificeerd'];
-            $inzien=$row['Alleen_lezen'];
 
-            // echo '<br>';
-            // echo "Scope id: " . $ScopeID;
-            // echo '<br>'; 
-            // echo "Gebruikers id: " . $GebruikerID;
-            // echo '<br>';
-            // echo "Gecertificeerd? " . $gecertificeerd;
-            // echo '<br>';
-            // echo "Inzien? " . $inzien;
-            
-            ScopeGebruikerGecertificeerd($ScopeID, $conn);
+            $gebruikerdata[$i] = $row['Nummer'];
+            $i = $i + 1;
         }
+        if($gebruikerdata){
+            return $gebruikerdata;
+        }
+        else{
+            return null;
+        } 
     }
-
 }
 
-function ScopeGebruikerGecertificeerd($ID_Scope, $conn)
+// functie voor het ophalen van alle scopes.
+function OphalenScopes($conn)
 {
-    $sql = "SELECT * FROM `scope` WHERE ID='$ID_Scope'";
+    $sql = "SELECT Nummer FROM `scope`";
     $result = mysqli_query($conn, $sql);
 
     if($result){
+        $i = 0;
+        $scopedata= [];
         while($row=mysqli_fetch_assoc($result)){
-            $scopeId=$row['ID'];
-            $scopeNummer=$row['Nummer'];
-            $omschrijving=$row['Omschrijving'];
-
-            // echo '<br>';
-            // echo "Scope id: " . $scopeId;
-            echo '<br>'; 
-            echo "Scope " . $scopeNummer;
-            // echo '<br>';
-            // echo "Omschrijving van de scope: " . $omschrijving;
-                 
+            
+            $scopedata[$i] = $row['Nummer'];
+            $i = $i + 1;  
         }
+        if($scopedata){
+            return $scopedata;
+        }
+        else{
+            return null;
+        }
+       
     }
 }
 
@@ -117,18 +115,41 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                         </button>
                     </div>
                     <div class="modal-body">
+                        
+                        <?php 
+                        $count = OphalenScopes($conn);
+                        if($count){
+                            foreach(OphalenScopes($conn) as $value) { 
+                            ?>                      
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id=<?php $value ?>>
+                                <label class="form-check-label" for="inlineCheckbox2">
+                                    <?php
+                                    echo $value;
+                                    //echo "<br>";
+                                ?>
+                                </label>   
+                            </div>
+                            <?php
+                            }}
+                            ?>
+                        <?php 
+                        $count = OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn, true);
+                        if($count){
+                            foreach(OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn, true) as $value) { 
+                            ?>                      
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">1</label>
+                            <input disabled class="form-check-input" type="checkbox" id=<?php $value ?> >
+                            <label class="form-check-label" for="inlineCheckbox3"> 
+                                <?php
+                                echo $value;
+                                //echo "<br>";
+                             ?>
+                            </label>   
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">2</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-                            <label class="form-check-label" for="inlineCheckbox3"><?php OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn) ; ?> </label>
-                        </div>
+                        <?php
+                            }}
+                        ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -140,7 +161,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
     </div>
     </div>
 
-    <a href="logout.php">Logout</a>
+    <a href="logout.php" class="btn btn-primary mx-3">Logout</a>
 
     <script>
         $('#myModal').modal('show')
