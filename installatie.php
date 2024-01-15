@@ -56,8 +56,8 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
-            <h1>Hello, <?php echo $_SESSION['gebruikersnaam']; ?>.</h1>
+        <div class="col-12 col-md-8">
+            <h1>Installaties bekijken.</h1>
             </br> 
         </div>
 
@@ -66,7 +66,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
         <div class="col-6 col-md-4">
             <a href="logout.php" class="btn btn-primary my-3">Logout</a>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-8">
         <!-- <a href="bedrijf.php" class="btn btn-primary my-3">volgende</a>-->
         </div>
 

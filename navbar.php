@@ -24,6 +24,9 @@
             <li class="nav-item">
                 <a class="nav-link" id="contact-tab" data-toggle="pill" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="demo-tab" data-toggle="pill" href="demo.php" role="tab" aria-controls="demo" aria-selected="true">Demo</a>
+            </li>
         </ul>
         <!-- <div class="tab-content" id="myTab">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> Home </a></div>

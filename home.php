@@ -77,6 +77,7 @@ function UpdatePopUp($sessie_ID, $conn)
 
 }
 
+// De scopes die worden aangevinkt door de gebruiker opslaan in de database als readonly.
 function InsertCheckboxValue($sessie_ID, $conn, $checkedScope)
 {
     foreach($checkedScope as $scope){
@@ -125,8 +126,8 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    
                                     <?php 
+                                    // Geeft alle scopes weer waarvoor de gebruiker niet gecertificeerd is.
                                     // Sorteert op ASCI en niet op nummer want Scope_Nummer is varchar.
                                     $resultScopes = OphalenScopes($conn);
                                     $resultGebruiker = OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn, true);
@@ -139,7 +140,6 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                             <label class="form-check-label" for="inlineCheckbox2">
                                                 <?php
                                                 echo $value;
-                                                //echo "<br>";
                                             ?>
                                             </label>   
                                         </div>
@@ -147,6 +147,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                         }}
                                         ?>
                                     <?php 
+                                    // Geeft de scopes weer waarvoor de gebruiker gecertificeerd is.
                                     $count = OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn, true);
                                     if($count){
                                         foreach(OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn, true) as $value) { 
@@ -164,6 +165,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                     ?>
                                 </div>
                                 <div class="modal-footer">
+                                    <!-- Zorgt ervoor dat de popup na de eerste keer inoggen niet meer wordt weergegeven. -->
                                     <?php UpdatePopUp($_SESSION['ID'], $conn); ?>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button> 
@@ -210,6 +212,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             <h1>Hello, <?php echo $_SESSION['gebruikersnaam']; ?>.</h1>
             </br> 
             <?php 
+            // De scopes die zijn aangevinkt door de gebruiker worden opgeslagen als readonly in de database.
             if(isset($_POST['scope'])){
                 InsertCheckboxValue($_SESSION['ID'], $conn, $_POST['scope']);
             }  
