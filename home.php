@@ -79,7 +79,14 @@ function UpdatePopUp($sessie_ID, $conn)
 
 function InsertCheckboxValue($sessie_ID, $conn, $checkedScope)
 {
-    $sql = "INSERT INTO `gebruikerscope`(`Scope_Nummer`, `Gebruiker_ID`, `Gecertificeerd`, `Alleen_lezen`) VALUES (['$checkedScope'],['$sessie_ID'],[value-3],)"; 
+    foreach($checkedScope as $scope){
+        $sql = "INSERT INTO `gebruikerscope`(`Scope_Nummer`, `Gebruiker_ID`, `Gecertificeerd`, `Alleen_lezen`) VALUES ('$scope','$sessie_ID','0','1')"; 
+        $result = mysqli_query($conn, $sql);
+        if(! $result){
+            echo "Fout bij toevoegen van de scope $scope";
+        }
+    }
+
 }
 
 // Het gebruiken van de informatie die uit het inloggen komt.
@@ -166,6 +173,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                     </div>
             <?php
                 }
+                
             ?>
         </form>
         <div class="col-6 col-md-4">
@@ -201,11 +209,10 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
         <div class="col-12 col-md-4">
             <h1>Hello, <?php echo $_SESSION['gebruikersnaam']; ?>.</h1>
             </br> 
-            <?php if(isset($_POST['scope'])){
-                foreach($_POST['scope'] as $x) {
-                    echo $x;
-                }
-            } 
+            <?php 
+            if(isset($_POST['scope'])){
+                InsertCheckboxValue($_SESSION['ID'], $conn, $_POST['scope']);
+            }  
             ?>
         </div>
 

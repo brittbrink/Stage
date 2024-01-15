@@ -16,19 +16,20 @@
         </a>
         <ul class="nav nav-pills mr-auto pl-3" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="pill" href="./home.php" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                <a class="nav-link active" id="home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="pill" href="./create.php" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="pill" href="./test.php" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                <a class="nav-link" id="contact-tab" data-toggle="pill" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
             </li>
         </ul>
         <!-- <div class="tab-content" id="myTab">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> Home </a></div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <a href="./create.php"> Create </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> Create </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> Dit is het contact. </div>
+            <div class="tab-pane fade" id="demo" role="tabpanel" aria-labelledby="demo-tab"> <a href="demo.php"> demo</a></div>
         </div>  -->
 
     </nav> 
