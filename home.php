@@ -84,7 +84,7 @@ function InsertCheckboxValue($sessie_ID, $conn, $checkedScope)
         $sql = "INSERT INTO `gebruikerscope`(`Scope_Nummer`, `Gebruiker_ID`, `Gecertificeerd`, `Alleen_lezen`) VALUES ('$scope','$sessie_ID','0','1')"; 
         $result = mysqli_query($conn, $sql);
         if(! $result){
-            echo "Fout bij toevoegen van de scope $scope";
+            echo "Fout bij toevoegen van scope $scope";
         }
     }
 
@@ -167,7 +167,6 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                 <div class="modal-footer">
                                     <!-- Zorgt ervoor dat de popup na de eerste keer inoggen niet meer wordt weergegeven. -->
                                     <?php UpdatePopUp($_SESSION['ID'], $conn); ?>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button> 
                                 </div>
                             </div>
@@ -214,6 +213,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             <?php 
             // De scopes die zijn aangevinkt door de gebruiker worden opgeslagen als readonly in de database.
             if(isset($_POST['scope'])){
+                echo
                 InsertCheckboxValue($_SESSION['ID'], $conn, $_POST['scope']);
             }  
             ?>
@@ -231,8 +231,6 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             
     </div>
     </div>
-
-    <!-- <a href="logout.php" class="btn btn-primary mx-3">Logout</a> --> 
 
     <script>
         $('#myModal').modal('show')

@@ -74,8 +74,6 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
     </div>
     </div>
 
-    <!-- <a href="logout.php" class="btn btn-primary mx-3">Logout</a>--> 
-
 </body>
 </html>
 

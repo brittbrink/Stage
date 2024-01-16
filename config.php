@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "sciospoc";
+    $dbname = "mockupdata";
 
     $conn = new mysqli("$servername", "$username", "$password", "$dbname");
 

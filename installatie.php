@@ -15,7 +15,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 <html>
 <head>
 
-    <title>Bedrijf toevoegen</title>
+    <title>Installaties bekijken</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"> <!-- CSS -->
@@ -67,14 +67,11 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             <a href="logout.php" class="btn btn-primary my-3">Logout</a>
         </div>
         <div class="col-12 col-md-8">
-        <!-- <a href="bedrijf.php" class="btn btn-primary my-3">volgende</a>-->
         </div>
 
             
     </div>
     </div>
-
-    <!-- <a href="logout.php" class="btn btn-primary mx-3">Logout</a>--> 
 
 </body>
 </html>
