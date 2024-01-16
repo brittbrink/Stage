@@ -167,7 +167,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                 <div class="modal-footer">
                                     <!-- Zorgt ervoor dat de popup na de eerste keer inoggen niet meer wordt weergegeven. -->
                                     <?php UpdatePopUp($_SESSION['ID'], $conn); ?>
-                                    <button type="submit" class="btn btn-primary">Save changes</button> 
+                                    <button type="submit" class="btn btn-primary">Opslaan</button> 
                                 </div>
                             </div>
                         </div>
@@ -177,7 +177,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                 
             ?>
         </form>
-        <div class="col-6 col-md-4">
+        <div class="col-3 col-md-4">
             <!-- link naar de stappen timeline: https://codeconvey.com/pure-css-vertical-stepper/ --> 
             <div class="step step-active"> 
             <div>
@@ -185,7 +185,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             </div>
             <div>
                 <div class="title">Eerste stap</div>
-                <div class="caption">Een locatie toevoegen aan uw verzameling.</div>
+                <div class="caption">Een locatie toevoegen aan uw collectie.</div>
             </div>
             </div>
             <div class="step">
@@ -207,8 +207,8 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
-            <h1>Hello, <?php echo $_SESSION['gebruikersnaam']; ?>.</h1>
+        <div class="col-6 col-md-5">
+            <h3>Hallo, <?php echo $_SESSION['gebruikersnaam']; ?>.</h3>
             </br> 
             <?php 
             // De scopes die zijn aangevinkt door de gebruiker worden opgeslagen als readonly in de database.
@@ -218,14 +218,20 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             }  
             ?>
         </div>
+        <div class="col-3 col-md-3">
+            <h3>Uw locaties: </h3>
+            </br> 
+        </div>
 
     </div>
     <div class="row">
-        <div class="col-6 col-md-4">
-            <a href="logout.php" class="btn btn-primary my-3">Logout</a>
+        <div class="col-3 col-md-4">
+            <a href="logout.php" class="btn btn-primary my-3">Uitloggen</a>
         </div>
-        <div class="col-12 col-md-4 ml-auto">
-        <a href="bedrijf.php" class="btn btn-primary my-3">volgende</a>
+        <div class="col-3 col-md-5">
+        </div>
+        <div class="col-auto">
+        <a href="bedrijf.php" class="btn btn-primary my-3">Volgende</a>
         </div>
 
             

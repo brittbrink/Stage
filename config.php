@@ -1,7 +1,7 @@
 <?php 
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "Exclus13f.net";
     $dbname = "mockupdata";
 
     $conn = new mysqli("$servername", "$username", "$password", "$dbname");

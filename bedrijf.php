@@ -26,7 +26,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 <body>
     <div class="container mx-1 my-4">
     <div class="row justify-content-start">
-        <div class="col-6 col-md-4">
+        <div class="col-3 col-md-4">
             <!-- link naar de stappen timeline: https://codeconvey.com/pure-css-vertical-stepper/ --> 
             <div class="step"> 
             <div>
@@ -56,17 +56,24 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
-            <h1>Bedrijf toevoegen.</h1>
+        <div class="col-6 col-md-5">
+            <h3>Bedrijf toevoegen.</h3>
+            </br> 
+        </div>
+        <div class="col-3 col-md-3">
+            <h4>Bestaande bedrijven op deze locatie: </h4>
             </br> 
         </div>
 
+
     </div>
     <div class="row">
-        <div class="col-6 col-md-4">
+        <div class="col-3 col-md-4">
             <a href="logout.php" class="btn btn-primary my-3">Logout</a>
         </div>
-        <div class="col-12 col-md-4 ml-auto">
+        <div class="col-3 col-md-5">
+        </div>
+        <div class="col-auto">
         <a href="installatie.php" class="btn btn-primary my-3">volgende</a>
         </div>
 
