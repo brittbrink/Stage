@@ -229,6 +229,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             <a href="logout.php" class="btn btn-primary my-3">Uitloggen</a>
         </div>
         <div class="col-3 col-md-5">
+        <a href="profiel.php" class="btn btn-primary my-3">Profiel</a>
         </div>
         <div class="col-auto">
         <a href="bedrijf.php" class="btn btn-primary my-3">Volgende</a>
