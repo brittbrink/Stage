@@ -150,7 +150,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                     // Geeft de scopes weer waarvoor de gebruiker gecertificeerd is.
                                     $count = OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn, true);
                                     if($count){
-                                        foreach(OphalenGebruikerScopeGecertificeerd($_SESSION['ID'], $conn, true) as $value) { 
+                                        foreach($count as $value) { 
                                         ?>                      
                                     <div class="form-check form-check-inline">
                                         <input disabled class="form-check-input" type="checkbox">
@@ -213,7 +213,6 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             <?php 
             // De scopes die zijn aangevinkt door de gebruiker worden opgeslagen als readonly in de database.
             if(isset($_POST['scope'])){
-                echo
                 InsertCheckboxValue($_SESSION['ID'], $conn, $_POST['scope']);
             }  
             ?>

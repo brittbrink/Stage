@@ -57,7 +57,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             </div>
         </div>
         <div class="col-6 col-md-5">
-            <h3>Bedrijf toevoegen.</h3>
+            <h3>Bedrijf toevoegen:</h3>
             </br> 
         </div>
         <div class="col-3 col-md-3">
