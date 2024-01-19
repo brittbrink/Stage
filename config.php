@@ -1,8 +1,8 @@
 <?php 
     $servername = "localhost";
     $username = "root";
-    $password = "Exclus13f.net";
-    $dbname = "mockupdata";
+    $password = "";
+    $dbname = "sciospoc";
 
     $conn = new mysqli("$servername", "$username", "$password", "$dbname");
 
