@@ -108,6 +108,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Profiel</title>
 </head>
 <body>
 <div class="container mx-1 my-4">

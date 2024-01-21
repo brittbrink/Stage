@@ -17,11 +17,6 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 
     <title>Installaties bekijken</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"> <!-- CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"> <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
     <div class="container mx-1 my-4">

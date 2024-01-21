@@ -101,10 +101,14 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 
     <title>HOME</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"> <!-- CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"> <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <!-- Voor werkend maken van modal -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -166,7 +170,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                 </div>
                                 <div class="modal-footer">
                                     <!-- Zorgt ervoor dat de popup na de eerste keer inoggen niet meer wordt weergegeven. -->
-                                    <?php UpdatePopUp($_SESSION['ID'], $conn); ?>
+                                    <?php UpdatePopUp($_SESSION['ID'], $conn); ?> 
                                     <button type="submit" class="btn btn-primary">Opslaan</button> 
                                 </div>
                             </div>
@@ -228,7 +232,6 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             <a href="logout.php" class="btn btn-primary my-3">Uitloggen</a>
         </div>
         <div class="col-3 col-md-5">
-        <a href="profiel.php" class="btn btn-primary my-3">Profiel</a>
         </div>
         <div class="col-auto">
         <a href="bedrijf.php" class="btn btn-primary my-3">Volgende</a>
@@ -240,7 +243,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 
     <script>
         $('#myModal').modal('show')
-
+        //myModal.show()
     </script>
 
 </body>
