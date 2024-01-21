@@ -79,6 +79,7 @@ function DeleteScopeLezen($sessie_ID, $conn, $scope)
 {
     foreach($scope as $s ){
         $sql = "DELETE FROM gebruikerscope WHERE `Scope_Nummer`='$s' AND `Gebruiker_ID`='$sessie_ID'"; 
+        echo "hallo in de delete functie";
         $result = mysqli_query($conn, $sql);
         if(! $result){
             echo "Fout bij verwijderen van scope $s.";
@@ -121,15 +122,15 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                 $count = OphalenGebruikerScopeLezen($_SESSION['ID'], $conn, true);
                 if($count){
                     foreach($count as $value) { 
-                ?>                      
-                    <div class="form-check form-check-inline mx-3">
-                        <input class="form-check-input" type="checkbox" name="scopeLezen[]" value="<?php echo $value ?>" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
+                ?>    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="scopeLezen[]" value="<?php echo $value ?>" id="flexCheck">
+                        <label class="form-check-label" for="flexCheck">
                             <?php
                                 echo $value;
                             ?>
                         </label>
-                    </div>
+                    </div>                  
                 <?php
                     }}
                 ?>
@@ -169,13 +170,14 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
         // De scopes die niet meer aangevinkt zijn worden verwijderd.
         if(isset($_POST['scopeLezen'])){
             DeleteScopeLezen($_SESSION['ID'], $conn, $_POST['scopeLezen']);
+
         }  
         // Toevoegen van de scopes die zijn aangevinkt om in te zien.
         if(isset($_POST['UpdateScopeLezen'])){
             InsertScopeLezen($_SESSION['ID'], $conn, $_POST['UpdateScopeLezen']);
+            //"UpdateScopeLezen[]" = [];
         } 
     ?>
- 
 </div>
 </body>
 </html>
