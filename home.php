@@ -90,6 +90,27 @@ function InsertCheckboxValue($sessie_ID, $conn, $checkedScope)
 
 }
 
+// Functie voor het ophalen van locaties die al bestaan in de database
+function OphalenLocatie($conn)
+{
+    $sql = "SELECT * FROM `locatie`";
+    $result = mysqli_query($conn, $sql);
+    $locatiedata = [];
+    if($result){
+        while($row=mysqli_fetch_assoc($result)){
+            $id=$row['ID'];
+            $adres=$row['Adres'];
+            $huisnummer=$row['Huisnummer'];
+            $toevoeging=$row['Toevoeging'];
+            $plaats=$row['Plaats'];
+            $postcode=$row['Postcode'];
+
+            echo $adres . " " . $huisnummer . ", " . $plaats;
+
+        }
+    }
+    
+}
 // Het gebruiken van de informatie die uit het inloggen komt.
 if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 
@@ -224,10 +245,20 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
         <div class="col-3 col-md-3">
             <h3>Uw locaties: </h3>
             <ul class="list-group my-3">
+                <?php
+                    $locaties = OphalenLocatie($conn);
+                    foreach($locaties as $locatie){
+                    
+                ?>
                 <a class="list-group-item d-flex justify-content-between align-items-center" data-bs-toggle="list" href="bedrijf.php" role="tab">
                     <!-- <span class="btn btn-outline-success"></span> -->
-                    Locatie 1
+                    <?php
+                        echo $value;
+                    ?>
                 </a>
+                <?php  
+                    }
+                ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center" style="border-top-width: 1;">
                     Locatie 2
                     <span class="badge bg-success rounded-pill">2</span>
