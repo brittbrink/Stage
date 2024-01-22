@@ -202,6 +202,12 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                 
             ?>
         </form>
+        <?php 
+            // De scopes die zijn aangevinkt door de gebruiker worden opgeslagen als readonly in de database.
+            if(isset($_POST['scope'])){
+                InsertCheckboxValue($_SESSION['ID'], $conn, $_POST['scope']);
+            }  
+        ?>
         <div class="col-3 col-md-4">
             <!-- link naar de stappen timeline: https://codeconvey.com/pure-css-vertical-stepper/ --> 
             <div class="step step-active"> 
@@ -233,14 +239,41 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             </div>
         </div>
         <div class="col-6 col-md-5">
-            <h3>Hallo, <?php echo $_SESSION['gebruikersnaam']; ?>.</h3>
-            </br> 
-            <?php 
-            // De scopes die zijn aangevinkt door de gebruiker worden opgeslagen als readonly in de database.
-            if(isset($_POST['scope'])){
-                InsertCheckboxValue($_SESSION['ID'], $conn, $_POST['scope']);
-            }  
-            ?>
+            <h2>Hallo, <?php echo $_SESSION['gebruikersnaam']; ?>.</h2>
+            <h4> Een locatie aanmaken: </h4>
+            <form method="POST">
+                <div class="mb-3 row">
+                    <label for="Adres" class="col-sm-3 col-form-label">Adres:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="Adres">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="Huisnummer" class="col-sm-3 col-form-label">Huisnummer:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="Huisnummer">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="Toevoeging" class="col-sm-3 col-form-label">Toevoeging:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="Toevoeging">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="Plaats" class="col-sm-3 col-form-label">Plaats:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="Plaats">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="Postcode" class="col-sm-3 col-form-label">Postcode:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="Postcode">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-success">Opslaan</button> 
+            </form>
         </div>
         <div class="col-3 col-md-3">
             <h3>Uw locaties: </h3>
