@@ -57,8 +57,8 @@
   }
 
   .step.step-active {
-    color: #4285f4
+    color: #1bbe72
   }
   .step.step-active .circle {
-    background-color: #4285f4;
+    background-color: #1bbe72;
   }

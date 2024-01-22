@@ -171,7 +171,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                                 <div class="modal-footer">
                                     <!-- Zorgt ervoor dat de popup na de eerste keer inoggen niet meer wordt weergegeven. -->
                                     <?php UpdatePopUp($_SESSION['ID'], $conn); ?> 
-                                    <button type="submit" class="btn btn-primary">Opslaan</button> 
+                                    <button type="submit" class="btn btn-success">Opslaan</button> 
                                 </div>
                             </div>
                         </div>
@@ -223,18 +223,38 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
         </div>
         <div class="col-3 col-md-3">
             <h3>Uw locaties: </h3>
-            </br> 
+            <ul class="list-group my-3">
+                <a class="list-group-item d-flex justify-content-between align-items-center" data-bs-toggle="list" href="bedrijf.php" role="tab">
+                    <!-- <span class="btn btn-outline-success"></span> -->
+                    Locatie 1
+                </a>
+                <li class="list-group-item d-flex justify-content-between align-items-center" style="border-top-width: 1;">
+                    Locatie 2
+                    <span class="badge bg-success rounded-pill">2</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center" style="border-top-width: 1;">
+                    Locatie 3
+                    <span class="badge bg-success rounded-pill">1</span>
+                </li>
+            </ul>
+            <!-- <ul class="list-group">
+                <li class="list-group-item" style="border-top-width: 1;">An item</li>
+                <li class="list-group-item" style="border-top-width: 1;">A second item</li>
+                <li class="list-group-item" style="border-top-width: 1;">A third item</li>
+                <li class="list-group-item" style="border-top-width: 1;">A fourth item</li>
+                <li class="list-group-item" style="border-top-width: 1;">And a fifth one</li>
+            </ul> -->
         </div>
 
     </div>
     <div class="row">
         <div class="col-3 col-md-4">
-            <a href="logout.php" class="btn btn-primary my-3">Uitloggen</a>
+            <a href="logout.php" class="btn btn-outline-success my-3">Uitloggen</a>
         </div>
         <div class="col-3 col-md-5">
         </div>
         <div class="col-auto">
-        <a href="bedrijf.php" class="btn btn-primary my-3">Volgende</a>
+        <a href="bedrijf.php" class="btn btn-outline-success my-3">Volgende</a>
         </div>
 
             
