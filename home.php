@@ -279,18 +279,18 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             <h3>Uw locaties: </h3>
             <ul class="list-group my-3">
                 <?php
-                    $locaties = OphalenLocatie($conn);
-                    foreach($locaties as $locatie){
+                    //$locaties = OphalenLocatie($conn);
+                //     foreach($locaties as $locatie){
                     
-                ?>
+                // ?>
                 <a class="list-group-item d-flex justify-content-between align-items-center" data-bs-toggle="list" href="bedrijf.php" role="tab">
                     <!-- <span class="btn btn-outline-success"></span> -->
                     <?php
-                        echo $value;
+                        OphalenLocatie($conn); // echo $value;
                     ?>
                 </a>
                 <?php  
-                    }
+                   // }
                 ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center" style="border-top-width: 1;">
                     Locatie 2
