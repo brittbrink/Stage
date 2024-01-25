@@ -16,17 +16,17 @@
         </a>
         <ul class="nav nav-pills mr-auto pl-3" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                <a class="nav-link active bg-success mx-3" id="home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="profiel" aria-selected="false">Profiel</a>
+                <a class="nav-link active bg-success mx-3" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="profiel" aria-selected="false">Profiel</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" id="contact-tab" data-toggle="pill" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="demo-tab" data-toggle="pill" href="demo.php" role="tab" aria-controls="demo" aria-selected="true">Demo</a>
-            </li>
+            </li> -->
         </ul>
         <!-- <div class="tab-content" id="myTab">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> Home </a></div>

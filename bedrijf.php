@@ -69,14 +69,8 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
     </div>
     <div class="row">
         <div class="col-3 col-md-4">
-            <a href="logout.php" class="btn btn-primary my-3">Logout</a>
+            <a href="logout.php" class="btn btn-outline-success my-3">Uitloggen</a>
         </div>
-        <div class="col-3 col-md-5">
-        </div>
-        <div class="col-auto">
-        <a href="installatie.php" class="btn btn-primary my-3">volgende</a>
-        </div>
-
             
     </div>
     </div>

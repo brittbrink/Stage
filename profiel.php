@@ -79,11 +79,11 @@ function DeleteScopeLezen($sessie_ID, $conn, $scope)
 {
     foreach($scope as $s ){
         $sql = "DELETE FROM gebruikerscope WHERE `Scope_Nummer`='$s' AND `Gebruiker_ID`='$sessie_ID'"; 
-        echo "hallo in de delete functie";
+        //echo "hallo in de delete functie";
         $result = mysqli_query($conn, $sql);
-        if(! $result){
-            echo "Fout bij verwijderen van scope $s.";
-        }
+        // if(! $result){
+        //     echo "Fout bij verwijderen van scope $s.";
+        // }
     }
     
 
@@ -95,9 +95,9 @@ function InsertScopeLezen($sessie_ID, $conn, $checkedScope)
     foreach($checkedScope as $scope){
         $sql = "INSERT INTO `gebruikerscope`(`Scope_Nummer`, `Gebruiker_ID`, `Gecertificeerd`, `Alleen_lezen`) VALUES ('$scope','$sessie_ID','0','1')"; 
         $result = mysqli_query($conn, $sql);
-        if(! $result){
-            echo "Fout bij toevoegen van scope $scope.";
-        }
+        // if(! $result){
+        //     echo "Fout bij toevoegen van scope $scope.";
+        // }
     }
 
 }
@@ -164,7 +164,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
                 </p>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Opslaan</button>  
+        <button type="submit" class="btn btn-outline-success">Opslaan</button>  
     </form>  
     <?php 
         // De scopes die niet meer aangevinkt zijn worden verwijderd.
@@ -178,6 +178,8 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             //"UpdateScopeLezen[]" = [];
         } 
     ?>
+    <a href="home.php" class="btn btn-outline-success my-3">Home</a>
+ 
 </div>
 </body>
 </html>
