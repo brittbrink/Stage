@@ -109,8 +109,8 @@ function OphalenLocatie($conn)
 
         }
     }
-    
 }
+
 // Het gebruiken van de informatie die uit het inloggen komt.
 if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
 
@@ -278,36 +278,13 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
         <div class="col-3 col-md-3">
             <h3>Uw locaties: </h3>
             <ul class="list-group my-3">
-                <?php
-                    //$locaties = OphalenLocatie($conn);
-                //     foreach($locaties as $locatie){
-                    
-                // ?>
                 <a class="list-group-item d-flex justify-content-between align-items-center" data-bs-toggle="list" href="bedrijf.php" role="tab">
                     <!-- <span class="btn btn-outline-success"></span> -->
                     <?php
                         OphalenLocatie($conn); // echo $value;
                     ?>
                 </a>
-                <?php  
-                   // }
-                ?>
-                <li class="list-group-item d-flex justify-content-between align-items-center" style="border-top-width: 1;">
-                    Locatie 2
-                    <span class="badge bg-success rounded-pill">2</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center" style="border-top-width: 1;">
-                    Locatie 3
-                    <span class="badge bg-success rounded-pill">1</span>
-                </li>
             </ul>
-            <!-- <ul class="list-group">
-                <li class="list-group-item" style="border-top-width: 1;">An item</li>
-                <li class="list-group-item" style="border-top-width: 1;">A second item</li>
-                <li class="list-group-item" style="border-top-width: 1;">A third item</li>
-                <li class="list-group-item" style="border-top-width: 1;">A fourth item</li>
-                <li class="list-group-item" style="border-top-width: 1;">And a fifth one</li>
-            </ul> -->
         </div>
 
     </div>
@@ -316,9 +293,6 @@ if (isset($_SESSION['ID']) && isset($_SESSION['gebruikersnaam'])) {
             <a href="logout.php" class="btn btn-outline-success my-3">Uitloggen</a>
         </div>
         <div class="col-3 col-md-5">
-        </div>
-        <div class="col-auto">
-        <a href="bedrijf.php" class="btn btn-outline-success my-3">Volgende</a>
         </div>
 
             
